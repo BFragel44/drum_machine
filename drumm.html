@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRCH-044</title>
+    <link rel="stylesheet" href="drumm_styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
+</head>
+<body>
+    <div class="drum-machine">
+        <!-- Display Screen (for tempo and pattern indicators) -->
+        <div class="display-screen">
+            <div class="pattern-indicator">Pattern: 1</div>
+            <div class="tempo-display">Tempo: 120 BPM</div>
+            <div class="current-source">Current Source: Bass Drum</div>
+        </div>
+
+        <!-- Control Knobs (for tempo, balance, accent, volume) -->
+        <div class="control-knobs">
+            <label>Tempo</label>
+            <input type="range" min="60" max="180" value="120" id="tempo-control">
+            <label>Volume</label>
+            <input type="range" min="0" max="100" value="50" id="volume-control">
+        </div>
+
+        <!-- Drum Pad Grid (kick, snare, hi-hat, etc.) -->
+        <div class="drum-grid">
+            <!-- Bass Drum -->
+            <div class="drum-pad drum-one">Bass Drum</div>
+            <!-- Snare Drum -->
+            <div class="drum-pad drum-two">Snare Drum</div>
+            <!-- Hi-Hat -->
+            <div class="drum-pad drum-three">Hi-Hat</div>
+            <!-- Clap -->
+            <div class="drum-pad drum-four">Clap</div>
+        </div>
+        
+        <!-- Sequencer Drum Velocity -->
+        <div class="drum-velocity">
+            <label class="velocity-label">Velocity</label>
+            <button class="velocity-btn" data-velocity="soft">Soft</button>
+            <button class="velocity-btn" data-velocity="medium">Medium</button>
+            <button class="velocity-btn" data-velocity="hard">Hard</button>
+        </div>
+
+        <!-- 16-Step Sequencer for drum loops -->
+        <div class="step-sequencer">
+            <div class="step-row">
+            <!-- Bass Drum Row -->
+            <div class="drum-label">Bass Drum</div>
+                <div class="step-buttons">
+                    <button class="step-pad" data-sound="sound_one" data-step="1"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="2"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="3"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="4"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="5"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="6"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="7"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="8"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="9"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="10"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="11"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="12"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="13"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="14"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="15"></button>
+                    <button class="step-pad" data-sound="sound_one" data-step="16"></button>
+                </div>
+            </div>
+        
+            <div class="step-row">
+            <!-- Snare Drum Row -->
+            <span class="drum-label">Snare Drum</span>
+                <div class="step-buttons">
+                    <button class="step-pad" data-sound="sound_two" data-step="1"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="2"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="3"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="4"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="5"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="6"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="7"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="8"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="9"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="10"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="11"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="12"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="13"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="14"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="15"></button>
+                    <button class="step-pad" data-sound="sound_two" data-step="16"></button>
+                </div>
+            </div>
+        
+            <div class="step-row">
+            <!-- Hi-Hat Row -->
+            <span class="drum-label">Hi-Hat</span>
+                <div class="step-buttons">
+                    <button class="step-pad" data-sound="sound_three" data-step="1"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="2"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="3"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="4"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="5"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="6"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="7"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="8"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="9"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="10"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="11"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="12"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="13"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="14"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="15"></button>
+                    <button class="step-pad" data-sound="sound_three" data-step="16"></button>
+                </div>
+            </div>
+
+            <div class="step-row">
+            <!-- Clap Row -->
+            <span class="drum-label">Clap</span>
+                <div class="step-buttons">
+                    <button class="step-pad" data-sound="sound_four" data-step="1"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="2"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="3"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="4"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="5"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="6"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="7"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="8"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="9"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="10"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="11"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="12"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="13"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="14"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="15"></button>
+                    <button class="step-pad" data-sound="sound_four" data-step="16"></button>
+                </div>
+            </div>
+        </div>
+        <!-- Transport Controls (start, stop, clear) -->
+        <div class="transport-controls">
+            <button id="start-btn">Start</button>
+            <button id="stop-btn">Stop</button>
+            <button id="clear-btn">Clear</button>
+        </div>
+    </div>
+    <script src="drumm.js"></script>
+</body>
+</html>
