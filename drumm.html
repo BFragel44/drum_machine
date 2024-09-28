@@ -12,17 +12,26 @@
     <div class="drum-machine">
         <!-- Display Screen (for tempo and pattern indicators) -->
         <div class="display-screen">
-            <div class="pattern-indicator">Pattern: 1</div>
-            <div class="tempo-display">Tempo: 120 BPM</div>
-            <div class="current-source">Current Source: Bass Drum</div>
+            <div class="bottom-screen-row">
+                <span class="tempo-display">120 BPM</span>
+                <span class="volume-display">Vol: 50%</span>
+                <span class="pattern-display">Pattern: 1</span>
+            </div>
         </div>
-
-        <!-- Control Knobs (for tempo, balance, accent, volume) -->
-        <div class="control-knobs">
-            <label>Tempo</label>
-            <input type="range" min="60" max="180" value="120" id="tempo-control">
-            <label>Volume</label>
+    
+        <div class="led-buttons">
+            <!-- Control Knobs (for tempo, volume) -->
+            <input type="range" min="60" max="180" value="120" step="1" id="tempo-control">
             <input type="range" min="0" max="100" value="50" id="volume-control">
+            <!-- Pattern Select Buttons-->
+            <div class="pattern-buttons">
+                <button class="pattern-btn selected-pattern" data-pattern="1"></button>
+                <button class="pattern-btn" data-pattern="2"></button>
+                <button class="pattern-btn" data-pattern="3"></button>
+                <button class="pattern-btn" data-pattern="4"></button>
+                <button class="pattern-btn" data-pattern="5"></button>
+                <button class="pattern-btn" data-pattern="6"></button>
+            </div>
         </div>
 
         <!-- Drum Pad Grid (kick, snare, hi-hat, etc.) -->
@@ -37,12 +46,28 @@
             <div class="drum-pad drum-four">Clap</div>
         </div>
         
-        <!-- Sequencer Drum Velocity -->
-        <div class="drum-velocity">
-            <label class="velocity-label">Velocity</label>
-            <button class="velocity-btn" data-velocity="soft">Soft</button>
-            <button class="velocity-btn selected-velocity" data-velocity="medium">Medium</button> <!-- Default selection -->
-            <button class="velocity-btn" data-velocity="hard">Hard</button>
+
+        <div class="velocity-steps-container">
+            <!-- Step Slider & Buttons -->
+            <div class="slider-container">
+                <div class="step-block-digits-container">
+                    <button class="step-block-digits selected-amount">16</button>
+                    <button class="step-block-digits">32</button>
+                    <button class="step-block-digits">48</button>
+                    <button class="step-block-digits">64</button>
+                </div>
+                <input type="range" class="step-slider" min="1" max="4" step="1" value="1" id="step-block-range">
+            </div>
+            <!-- Digital Step Display LED -->
+            <div class="step-display">
+                <div class="step-digits">00</div>
+            </div>
+            <!-- Sequencer Drum Velocity -->
+            <div class="drum-velocity">
+                <button class="velocity-btn" data-velocity="soft">S</button>
+                <button class="velocity-btn selected-velocity" data-velocity="medium">M</button>
+                <button class="velocity-btn" data-velocity="hard">H</button>
+            </div>
         </div>
 
         <!-- 16-Step Sequencer for drum loops -->

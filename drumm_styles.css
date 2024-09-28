@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #333;
@@ -17,90 +18,204 @@ body {
     text-align: center;
 }
 
+@font-face {
+    font-family: 'DS-DIGIB';
+    src: url('drum_assets/DS-DIGIB.TTF') format('truetype');
+}
+
+/* Red and Black LED screen */
 .display-screen {
+    display: flex;
+    align-items: flex-end;
     background-color: #000000;
     border: 2px solid #777;
     padding: 10px;
-    margin-bottom: 20px;
-    font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     color: #f80000;
+    font-family: 'DS-DIGIB', sans-serif;
 }
 
-.control-knobs {
-    margin-bottom: 20px;
+/* Bottom LED text row */
+.bottom-screen-row {
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+/* Tempo LED text */
+.tempo-display {
+    display: flex;
+    text-align: left;
 }
 
+.volume-display {
+    display: flex;
+    text-align: center;
+}
+
+/* Pattern LED text */
+.pattern-display {
+    display: flex;
+    text-align: right;
+}
+
+.led-buttons { /* LED buttons CONTAINER */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
+}
+
+/* Tempo and Volume knobs */
 .control-knobs input {
     width: 100px;
     margin: 0 10px;
 }
 
-.drum-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+.volume-control {
+    display: flex;
+}
+
+.tempo-control {
+    display: flex;
+}
+
+/* Pattern buttons */
+.pattern-buttons {
+    display: flex;
     margin-bottom: 20px;
 }
 
-.velocity-label {
-    text-align: left;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* Style for velocity buttons */
-.velocity-btn {
+/* Individual Pattern buttons */
+.pattern-btn {
     padding: 10px;
     background-color: #666;
-    border: none;
+    border: 1px solid #777;
+    cursor: pointer;
+}
+
+/* Highlight the SELECTED pattern button*/
+.selected-pattern {
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
     color: #fff;
+}
+
+/* Drum pads under the control knobs */
+.drum-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+/* Step Blocks, Step Digits, Velocity row */
+.velocity-steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Flexbox for slider-container */
+.slider-container {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Container for the digit buttons */
+.step-block-digit-container {
+    display: flex;
+}
+
+.step-block-digits {
+    width: 4ch;
+    text-align: center;
+    background-color: #666;
+    border: 2px solid #777;
+    color: #eee;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.step-block-digits.selected-amount {
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
+    color: #fff;
+}
+
+/* Slider styling */
+.step-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #b6b6b6;
+    border: 2px solid #777;
+    height: 1rem;
     cursor: pointer;
 
 }
 
-/* Indicate the active velocity button */
+/* Step Counter LED Screen */
+.step-display {
+    display: flex;
+    align-items: center;
+    background-color: #000000;
+    border: 2px solid #777;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+/* Step Counter Digits */
+.step-digits {
+    width: 2ch;
+    font-size: 1.5rem;
+    align-items: center;
+    font-family: 'DS-DIGIB', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #f80000;
+    user-select: none;
+}
+
+.drum-velocity {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+
+}
+
+/* Style for velocity buttons */
+.velocity-btn {
+    display: flex;
+    padding: 10px;
+    background-color: #666;
+    border: 2px solid #777;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Highlight the SELECTED velocity button [Soft, Medium, Hard] */
 .selected-velocity {
-    background-color: #ff8800; /* Bright color to show selected button */
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
     color: #fff;
 }
 
-/* Soft velocity */
-.step-pad.soft {
-    background-color: rgb(255, 200, 128); /* Lighter orange */
+/* Highlighting the active step */
+.active-step {
+    border-color: #ff0000; /* Red border for extra emphasis */
+    box-shadow: 0 0 20px #ff0000; /* "glow" effect */
 }
 
-/* Default medium velocity */
-.step-pad.medium {
-    background-color: rgb(255, 136, 0); /* Default orange */
-}
-
-/* Hard velocity */
-.step-pad.hard {
-    background-color: rgb(200, 90, 0); /* Darker orange */
-}
 .step-sequencer {
     display: grid;
-    grid-template-columns: 100px repeat(16); /* First column for labels, next 16 for step buttons */
+    grid-template-columns: 100px repeat(16);
     grid-gap: 10px; /* Space between the columns */
-    align-items: center; /* Aligns the buttons vertically in center */
+    align-items: center; /* Aligns the buttons vertically from center */
 }
 
-.step-pad.selected {
-    border: 2px solid rgb(255, 255, 255); /* visual to indicate a selected step */
-    background-color: #ff8800; /* Change color to visually show the selected state */
-}
-
-.drum-label {
-    text-align: left;
-    color: #fff;
-    padding-right: 10px;
-    font-weight: bold;
-}
-
-.step-buttons {
-    display: flex;
-    justify-content: space-between;
+.step-row {
+    display: contents; /* Align rows properly in grid */
 }
 
 .step-pad {
@@ -112,23 +227,33 @@ body {
 
 }
 
+.step-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 .step-pad.selected {
-    background-color: rgb(255, 136, 0); /* Color for selected steps */
+    border: 2px solid rgb(255, 255, 255);
+    background-color: #ff8800; /* Highlight for selected steps */
 }
 
-.step-pad:active {
-    background-color: rgb(255, 136, 0); /* Color when actively pressed */
+.step-pad.soft {
+    background-color: rgb(255, 200, 128); /* Light orange for soft */
 }
 
-.step-row {
-    display: contents; /* Align rows properly in grid */
+.step-pad.medium {
+    background-color: rgb(255, 136, 0); /* Medium velocity */
 }
 
-/* Highlighting the active step */
-.active-step {
-    background-color: #00ff00; /* Bright green to indicate active step */
-    border-color: #ff0000; /* Red border for extra emphasis */
-    box-shadow: 0 0 10px #00ff00; /* "glow" effect */
+.step-pad.hard {
+    background-color: rgb(200, 90, 0); /* Darker orange for hard */
+}
+
+.drum-label {
+    text-align: left;
+    color: #fff;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 .drum-pad {
@@ -137,28 +262,27 @@ body {
     border: 2px solid #666;
     color: #fff;
     font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
 }
-
 .drum-pad:active {
-    background-color: rgb(255, 136, 0);
     transform: translateY(4px);
 }
-
 .drum-pad.drum-one.selected {
-    background-color: rgb(255, 0, 0); /* Red */
+    background-color: rgb(255, 136, 0);
+    border: solid 2px #ffffff;
 }
-
 .drum-pad.drum-two.selected {
-    background-color: rgb(0, 255, 0); /* Green */
+    background-color: rgb(255, 136, 0);
+    border: solid 2px #ffffff;
 }
-
 .drum-pad.drum-three.selected {
-    background-color: rgb(0, 0, 255); /* Blue */
+    background-color: rgb(255, 136, 0);
+    border: solid 2px #ffffff;
 }
-
 .drum-pad.drum-four.selected {
-    background-color: rgb(255, 255, 0); /* Yellow */
+    background-color: rgb(255, 136, 0);
+    border: solid 2px #ffffff;
 }
 
 .transport-controls button {
@@ -169,7 +293,7 @@ body {
     color: #fff;
     cursor: pointer;
 }
-
 .transport-controls button:hover {
     background-color: #888;
 }
+

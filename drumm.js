@@ -1,9 +1,9 @@
 
-var sound_one = new Howl({src: ['drum_assets/DR-110Kick.wav']});
-var sound_two = new Howl({src: ['drum_assets/DR-110Snare.wav']});
-var sound_three = new Howl({src: ['drum_assets/DR-110Hat_C.wav']});
-var sound_four = new Howl({src: ['drum_assets/DR-110Clap.wav']});
-var metro_click = new Howl({src: ['drum_assets/metronome.wav']});
+var sound_one = new Howl({src: ['drum_assets/DR-110Kick.wav'], preload: true});
+var sound_two = new Howl({src: ['drum_assets/DR-110Snare.wav'], preload: true});
+var sound_three = new Howl({src: ['drum_assets/DR-110Hat_C.wav'], preload: true});
+var sound_four = new Howl({src: ['drum_assets/DR-110Clap.wav'], preload: true});
+var metro_click = new Howl({src: ['drum_assets/metronome.wav'], preload: true});
 
 const soundMap = {
     sound_one: sound_one,
@@ -19,25 +19,69 @@ document.getElementById('clear-btn').addEventListener('click', clearPattern);
 let isPlaying = false;
 let tempo = 120;
 let interval;
+let globalVolume = 50;
 
 document.getElementById('tempo-control').addEventListener('input', function () {
     tempo = this.value;
-    document.querySelector('.tempo-display').innerText = `Tempo: ${tempo} BPM`;
+    document.querySelector('.tempo-display').innerText = `${tempo} BPM`;
     if (isPlaying) {
         stopSequence();
         startSequence();
     }
 });
 
+document.getElementById('volume-control').addEventListener('input', function () {
+    globalVolume = this.value;
+    Howler.volume(globalVolume / 100);
+    document.querySelector('.volume-display').innerText = `Vol: ${globalVolume}%`;
+});
+
+document.querySelectorAll('.step-block-digits').forEach(digit => {
+    digit.addEventListener('click', function () {
+        // Check if the clicked element is the left-most button
+        if (this.previousElementSibling === null) {
+            // If it is the left-most button, ensure it remains selected
+            this.classList.add('selected-amount');
+
+            // Remove the class from all next siblings
+            let nextSibling = this.nextElementSibling;
+            while (nextSibling) {
+                nextSibling.classList.remove('selected-amount');
+                nextSibling = nextSibling.nextElementSibling;
+            }
+
+            return; // Exit the function early
+        }
+
+        // Toggle the selected-amount class on the clicked element
+        this.classList.toggle('selected-amount');
+
+        // Get all previous siblings and add the selected-amount class to them
+        let previousSibling = this.previousElementSibling;
+        while (previousSibling) {
+            previousSibling.classList.add('selected-amount');
+            previousSibling = previousSibling.previousElementSibling;
+        }
+
+        // If the clicked element is deselected, remove the class from all next siblings
+        if (!this.classList.contains('selected-amount')) {
+            let nextSibling = this.nextElementSibling;
+            while (nextSibling) {
+                nextSibling.classList.remove('selected-amount');
+                nextSibling = nextSibling.nextElementSibling;
+            }
+        }
+    });
+});
+
+
+// Play the corresponding sound for top drum pads
 document.querySelectorAll('.drum-pad').forEach(pad => {
     pad.addEventListener('click', function() {
         // Remove 'selected' class from all drum pads
         document.querySelectorAll('.drum-pad').forEach(p => p.classList.remove('selected'));
-
         // Add 'selected' class to the clicked pad
         this.classList.add('selected');
-
-        // Play the corresponding sound for top drum pads
         if (this.classList.contains('drum-one')) {
             sound_one.play();
         } else if (this.classList.contains('drum-two')) {
@@ -65,11 +109,30 @@ function stopSequence() {
 
 function clearPattern() {
     // Reset or clear the current pattern
+  
 }
+
+let currentPattern = '1'; // Default pattern
+
+// Pattern button clicks
+document.querySelectorAll('.pattern-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+        currentPattern = this.getAttribute('data-pattern');
+        
+        document.querySelectorAll('.pattern-display').forEach(display => {
+            display.innerText = `Pattern: ${currentPattern}`;
+        });
+        console.log(currentPattern);
+        // Add visual feedback for the pattern buttons
+        document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('selected-pattern'));
+        this.classList.add('selected-pattern');
+    });
+});
+
 let currentStep = 0;
 let currentVelocity = 'medium'; // Default velocity
 
-// Handle velocity button clicks
+// Velocity button clicks
 document.querySelectorAll('.velocity-btn').forEach(btn => {
     btn.addEventListener('click', function () {
         currentVelocity = this.getAttribute('data-velocity'); // Get the velocity (soft, medium, hard)
@@ -83,26 +146,22 @@ document.querySelectorAll('.velocity-btn').forEach(btn => {
 // Handle step pad clicks to set the velocity for each step
 document.querySelectorAll('.step-pad').forEach(step => {
     step.addEventListener('click', function () {
-        // Toggle selected state
-        this.classList.toggle('selected'); 
-        
-        // Remove any previous velocity class
-        this.classList.remove('soft', 'medium', 'hard');
-
-        // Add the current velocity class
-        this.classList.add(currentVelocity);
-
-        // Mark step as selected
-        this.classList.toggle('selected');
-        this.setAttribute('selected', true);
-        console.log('currentVelocity =', currentVelocity);
-        console.log('selected =', this.getAttribute('selected'));
-        // Store the velocity data on the element
-        this.setAttribute('data-velocity', currentVelocity);
+        if (!this.classList.contains('selected')) {
+            // If the step is selected, set the velocity
+            this.classList.add(currentVelocity);
+            this.setAttribute('data-velocity', currentVelocity);
+            console.log(`selected status: ${this.classList.contains('selected')}`);
+        } else {
+            // If the step is already selected, remove the velocity
+            this.classList.remove('soft', 'medium', 'hard');
+            this.removeAttribute('data-velocity');
+            console.log(`selected status: ${this.classList.contains('selected')}`);
+        }
     });
 });
 
-// ******velocity pad playPattern version******
+
+// Controls the playback of the pattern, visual metronome
 function playPattern() {
     document.querySelectorAll('.step-row').forEach(row => {
         const buttons = row.querySelectorAll('.step-pad');
@@ -114,11 +173,10 @@ function playPattern() {
         const currentPad = buttons[currentStep];
         currentPad.classList.add('active-step');
 
-        // Check if the step is selected
+        // Check if the step is selected before playing sound
         if (currentPad.classList.contains('selected')) {
             const soundKey = currentPad.getAttribute('data-sound');
             const sound = soundMap[soundKey];
-            console.log('soundKey =', soundKey);
 
             if (sound) {
                 // Adjust volume based on velocity
@@ -132,14 +190,19 @@ function playPattern() {
                 }
 
                 console.log(`Playing sound: ${soundKey}, volume: ${volume}, velocity: ${velocity}`);
-                // Set the volume and play the sound
                 sound.volume(volume);
                 sound.play();
             }
+        } else {
+            console.log("Step is not selected and will not play.");
         }
     });
-    // Move to the next step
-    currentStep = (currentStep + 1) % 16; // Loop back to the first step after 16
+    // Update the .step-digits div to show the current step number
+    document.querySelector('.step-digits').innerText = (currentStep + 1).toString().padStart(2, '0'); // Assuming steps are 1-indexed and padded to 2 digits
+
+    // Move to the next step, loops back to the first step after 16
+    currentStep = (currentStep + 1) % 16;
+    console.log(`Current step: ${currentStep}`);
 }
 
 document.querySelectorAll('.step-pad').forEach(step => {
