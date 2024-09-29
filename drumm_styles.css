@@ -13,6 +13,7 @@ body {
 .drum-machine {
     background-color: #222;
     border: 2px solid #999;
+    border-radius: 0.3rem;
     padding: 20px;
     width: 600px;
     text-align: center;
@@ -111,13 +112,15 @@ body {
 /* Step Blocks, Step Digits, Velocity row */
 .velocity-steps-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center; /* Vertically align */
+    width: 100%; /* Full width of the parent container */
 }
 
 /* Flexbox for slider-container */
 .slider-container {
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -129,7 +132,6 @@ body {
 
 .step-block-digits {
     width: 4ch;
-    text-align: center;
     background-color: #666;
     border: 2px solid #777;
     color: #eee;
@@ -157,11 +159,13 @@ body {
 /* Step Counter LED Screen */
 .step-display {
     display: flex;
-    align-items: center;
     background-color: #000000;
     border: 2px solid #777;
+    justify-content: center;
+    max-width: 100%;
     padding: 10px;
-    margin: 0 auto;
+    /* margin: Top, Right, Bottom, Left */
+    margin: 0 auto 0 auto;
 }
 
 /* Step Counter Digits */
@@ -176,22 +180,25 @@ body {
     user-select: none;
 }
 
+/* Velocity Buttons Container */
 .drum-velocity {
     display: flex;
     justify-content: flex-end;
     flex-direction: row;
-
 }
 
 /* Style for velocity buttons */
 .velocity-btn {
     display: flex;
     padding: 10px;
+    text-align: center;
+    align-content: center;
     background-color: #666;
     border: 2px solid #777;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    width: 45px;
 }
 
 /* Highlight the SELECTED velocity button [Soft, Medium, Hard] */
@@ -212,6 +219,7 @@ body {
     grid-template-columns: 100px repeat(16);
     grid-gap: 10px; /* Space between the columns */
     align-items: center; /* Aligns the buttons vertically from center */
+    margin-bottom: 20px;
 }
 
 .step-row {

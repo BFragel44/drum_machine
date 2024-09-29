@@ -100,17 +100,39 @@ function startSequence() {
         isPlaying = true;
         interval = setInterval(playPattern, (60000 / tempo) / 4); // Adjusts for tempo and timing
     }
-}
+};
+
+let pressCount = 0;
 
 function stopSequence() {
-    isPlaying = false;
-    clearInterval(interval);
+    if (isPlaying) {
+        isPlaying = false;
+        clearInterval(interval);
+        console.log('Sequence stopped');
+    }
+    pressCount++;
+
+    // If pressed a second time, reset the step digits and remove the active-step class
+    if (pressCount >= 2) {
+        resetSequence();
+    }
+}
+
+function resetSequence() {
+    currentStep = 0;
+    pressCount = 0;
+    document.querySelector('.step-digits').innerText = '01';
+    document.querySelectorAll('.step-pad').forEach(step => step.classList.remove('active-step'));
+    console.log('Sequence reset');
 }
 
 function clearPattern() {
     // Reset or clear the current pattern
-  
-}
+    document.querySelectorAll('.step-pad').forEach(step => {
+        step.classList.remove('selected', 'soft', 'medium', 'hard');
+        step.removeAttribute('data-velocity');
+    });
+};
 
 let currentPattern = '1'; // Default pattern
 
