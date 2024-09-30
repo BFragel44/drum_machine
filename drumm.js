@@ -49,7 +49,6 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
                 nextSibling.classList.remove('selected-amount');
                 nextSibling = nextSibling.nextElementSibling;
             }
-
             return; // Exit the function early
         }
 
@@ -71,6 +70,14 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
                 nextSibling = nextSibling.nextElementSibling;
             }
         }
+    });
+});
+
+// change totalSteps based on which .step-block-digits button is selected
+document.querySelectorAll('.step-block-digits').forEach(digit => {
+    digit.addEventListener('click', function () {
+        totalSteps = parseInt(this.innerText);
+        console.log(`Total steps: ${totalSteps}`);
     });
 });
 
@@ -112,7 +119,7 @@ function stopSequence() {
     }
     pressCount++;
 
-    // If pressed a second time, reset the step digits and remove the active-step class
+    // If pressed a second time, reset step digits
     if (pressCount >= 2) {
         resetSequence();
     }
@@ -151,8 +158,32 @@ document.querySelectorAll('.pattern-btn').forEach(btn => {
     });
 });
 
-let currentStep = 0;
+
+let totalSteps = 16; // will be updated based on [16, 32, 48, 64] step buttons
+let currentChunk = 1; // Start with the first chunk
+let currentStep = 0; // current step in the sequencer
 let currentVelocity = 'medium'; // Default velocity
+
+// .step-slider flips between 1-16, 32, 48, 64 steps for editing patterns
+function updateChunkDisplay() {
+    // Hide all .step-buttons not in the current chunk, .step-buttons chunk-1 is the default
+    document.querySelectorAll('.step-buttons').forEach(step => {
+        if (step.classList.contains(`chunk-${currentChunk}`)) {
+            step.style.display = 'flex';
+        } else {
+            step.style.display = 'none';
+        }
+    });
+}
+
+// .step-slider flips between 1-16, 32, 48, 64 steps for editing patterns
+document.querySelector('.step-slider').addEventListener('input', function () {
+    currentChunk = parseInt(this.value);
+    updateChunkDisplay();
+});
+
+// Called on page load to set default chunk-1
+updateChunkDisplay();
 
 // Velocity button clicks
 document.querySelectorAll('.velocity-btn').forEach(btn => {
@@ -223,7 +254,7 @@ function playPattern() {
     document.querySelector('.step-digits').innerText = (currentStep + 1).toString().padStart(2, '0'); // Assuming steps are 1-indexed and padded to 2 digits
 
     // Move to the next step, loops back to the first step after 16
-    currentStep = (currentStep + 1) % 16;
+    currentStep = (currentStep + 1) % totalSteps;
     console.log(`Current step: ${currentStep}`);
 }
 

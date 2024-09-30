@@ -115,7 +115,7 @@ body {
     justify-content: space-evenly;
     align-content: center;
     align-items: center; /* Vertically align */
-    width: 100%; /* Full width of the parent container */
+    width: 100%;
 }
 
 /* Flexbox for slider-container */
@@ -238,6 +238,22 @@ body {
 .step-buttons {
     display: flex;
     justify-content: space-between;
+}
+
+.step-buttons.chunk-one {
+    display: flex;
+}
+
+.step-buttons.chunk-two {
+    display: none;
+}
+
+.step-buttons.chunk-three {
+    display: none;
+}
+
+.step-buttons.chunk-four {
+    display: none;
 }
 
 .step-pad.selected {
