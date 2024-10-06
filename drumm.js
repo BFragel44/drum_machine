@@ -101,7 +101,6 @@ document.querySelectorAll('.drum-pad').forEach(pad => {
     });
 });
 
-
 function startSequence() {
     if (!isPlaying) {
         isPlaying = true;
@@ -141,17 +140,16 @@ function clearPattern() {
     });
 };
 
+
 let currentPattern = '1'; // Default pattern
 
 // Pattern button clicks
 document.querySelectorAll('.pattern-btn').forEach(btn => {
     btn.addEventListener('click', function () {
         currentPattern = this.getAttribute('data-pattern');
-        
         document.querySelectorAll('.pattern-display').forEach(display => {
             display.innerText = `Pattern: ${currentPattern}`;
         });
-        console.log(currentPattern);
         // Add visual feedback for the pattern buttons
         document.querySelectorAll('.pattern-btn').forEach(b => b.classList.remove('selected-pattern'));
         this.classList.add('selected-pattern');
@@ -258,8 +256,99 @@ function playPattern() {
     console.log(`Current step: ${currentStep}`);
 }
 
+const patterns = {
+    1: { steps: [], blocks: [] },
+    2: { steps: [], blocks: [] },
+    3: { steps: [], blocks: [] },
+    4: { steps: [], blocks: [] },
+    5: { steps: [], blocks: [] },
+    6: { steps: [], blocks: [] }
+};
+
+// Function to update the current pattern
+function updateCurrentPattern() {
+    const pattern = {
+        steps: [],
+        blocks: []
+    };
+    document.querySelectorAll('.step-pad').forEach(step => {
+        pattern.steps.push({
+            selected: step.classList.contains('selected'),
+            velocity: step.getAttribute('data-velocity') || 'medium'
+        });
+    });
+    document.querySelectorAll('.step-block-button').forEach(block => {
+        pattern.blocks.push({
+            selected: block.classList.contains('selected')
+        });
+    });
+    patterns[currentPattern] = pattern;
+    console.log(`Pattern ${currentPattern} updated.`);
+}
+
+// Event listeners for step pads
 document.querySelectorAll('.step-pad').forEach(step => {
     step.addEventListener('click', function () {
-        this.classList.toggle('selected'); // Toggle selected state
+        this.classList.toggle('selected');
+        updateCurrentPattern();
     });
+});
+
+// Event listeners for step block buttons
+document.querySelectorAll('.step-block-button').forEach(block => {
+    block.addEventListener('click', function () {
+        this.classList.toggle('selected');
+        updateCurrentPattern();
+    });
+});
+
+// Add event listeners to the pattern buttons
+document.querySelectorAll('.pattern-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        // Remove the 'selected-pattern' class from all buttons
+        document.querySelectorAll('.pattern-btn').forEach(btn => btn.classList.remove('selected-pattern'));
+
+        // Add the 'selected-pattern' class to the clicked button
+        this.classList.add('selected-pattern');
+
+        // Update the current pattern
+        currentPattern = this.getAttribute('data-pattern');
+        document.querySelectorAll('.pattern-display').forEach(display => {
+            display.innerText = `Pattern: ${currentPattern}`;
+        });
+
+        // Load the selected pattern
+        loadPattern(currentPattern);
+    });
+});
+
+// Function to load a stored pattern
+function loadPattern(patternNumber) {
+    const pattern = patterns[patternNumber];
+    if (pattern) {
+        document.querySelectorAll('.step-pad').forEach((step, index) => {
+            step.classList.remove('selected', 'soft', 'medium', 'hard');
+            if (pattern[index] && pattern[index].selected) {
+                step.classList.add('selected');
+                step.classList.add(pattern[index].velocity);
+                step.setAttribute('data-velocity', pattern[index].velocity);
+            } else {
+                step.removeAttribute('data-velocity');
+            }
+        });
+        document.querySelectorAll('.step-block-button').forEach((block, index) => {
+            block.classList.remove('selected');
+            if (pattern.blocks[index] && pattern.blocks[index].selected) {
+                block.classList.add('selected');
+            }
+        });
+        console.log(`Pattern ${patternNumber} loaded.`);
+    } else {
+        console.log(`Pattern ${patternNumber} not found.`);
+    }
+}
+
+// Load the default pattern on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadPattern(currentPattern);
 });

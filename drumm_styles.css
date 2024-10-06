@@ -116,6 +116,7 @@ body {
     align-content: center;
     align-items: center; /* Vertically align */
     width: 100%;
+    margin-bottom: 20px;
 }
 
 /* Flexbox for slider-container */
@@ -189,7 +190,6 @@ body {
 
 /* Style for velocity buttons */
 .velocity-btn {
-    display: flex;
     padding: 10px;
     text-align: center;
     align-content: center;
@@ -211,28 +211,28 @@ body {
 /* Highlighting the active step */
 .active-step {
     border-color: #ff0000; /* Red border for extra emphasis */
-    box-shadow: 0 0 20px #ff0000; /* "glow" effect */
+    box-shadow: 0 0 20px #ffffff; /* glow */
 }
 
 .step-sequencer {
     display: grid;
     grid-template-columns: 100px repeat(16);
-    grid-gap: 10px; /* Space between the columns */
-    align-items: center; /* Aligns the buttons vertically from center */
-    margin-bottom: 20px;
+    grid-gap: 5px; /* Space between rows */
+    align-items: center;
 }
 
 .step-row {
-    display: contents; /* Align rows properly in grid */
+    display: contents;
+    margin-top: 0%;
+    padding: 100%;
 }
 
 .step-pad {
     width: 30px;
     height: 30px;
     background-color: #444;
-    border: 1px solid #666;
+    border: 2px solid #666;
     cursor: pointer;
-
 }
 
 .step-buttons {
@@ -241,7 +241,7 @@ body {
 }
 
 .step-buttons.chunk-one {
-    display: flex;
+    display: none;
 }
 
 .step-buttons.chunk-two {
@@ -274,10 +274,18 @@ body {
 }
 
 .drum-label {
+    background-color: #000000;
+    border: 2px solid #777;
+    max-width: 18%;
+    padding: 1px;
     text-align: left;
-    color: #fff;
+    font-family: 'DS-DIGIB', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f80000;
     padding-right: 10px;
     font-weight: bold;
+    margin-bottom: 0px;
 }
 
 .drum-pad {
