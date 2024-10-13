@@ -36,13 +36,19 @@ document.getElementById('volume-control').addEventListener('input', function () 
     document.querySelector('.volume-display').innerText = `Vol: ${globalVolume}%`;
 });
 
+// Event listener for the step block digit "selected" logic
 document.querySelectorAll('.step-block-digits').forEach(digit => {
     digit.addEventListener('click', function () {
+        // Get the data-value attribute of the clicked button
+        const pattern = patterns[currentPattern];
+        pattern.blocks = parseInt(this.getAttribute('data-value'));
+        // Add dataValue to totalSteps
+        totalSteps = pattern.blocks;
+        console.log(`Total steps: ${totalSteps}`);
         // Check if the clicked element is the left-most button
         if (this.previousElementSibling === null) {
             // If it is the left-most button, ensure it remains selected
             this.classList.add('selected-amount');
-
             // Remove the class from all next siblings
             let nextSibling = this.nextElementSibling;
             while (nextSibling) {
@@ -51,17 +57,14 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
             }
             return; // Exit the function early
         }
-
         // Toggle the selected-amount class on the clicked element
         this.classList.toggle('selected-amount');
-
         // Get all previous siblings and add the selected-amount class to them
         let previousSibling = this.previousElementSibling;
         while (previousSibling) {
             previousSibling.classList.add('selected-amount');
             previousSibling = previousSibling.previousElementSibling;
         }
-
         // If the clicked element is deselected, remove the class from all next siblings
         if (!this.classList.contains('selected-amount')) {
             let nextSibling = this.nextElementSibling;
@@ -70,14 +73,6 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
                 nextSibling = nextSibling.nextElementSibling;
             }
         }
-    });
-});
-
-// change totalSteps based on which .step-block-digits button is selected
-document.querySelectorAll('.step-block-digits').forEach(digit => {
-    digit.addEventListener('click', function () {
-        totalSteps = parseInt(this.innerText);
-        console.log(`Total steps: ${totalSteps}`);
     });
 });
 
@@ -201,12 +196,10 @@ document.querySelectorAll('.step-pad').forEach(step => {
             // If the step is selected, set the velocity
             this.classList.add(currentVelocity);
             this.setAttribute('data-velocity', currentVelocity);
-            console.log(`selected status: ${this.classList.contains('selected')}`);
         } else {
             // If the step is already selected, remove the velocity
             this.classList.remove('soft', 'medium', 'hard');
             this.removeAttribute('data-velocity');
-            console.log(`selected status: ${this.classList.contains('selected')}`);
         }
     });
 });
@@ -256,20 +249,20 @@ function playPattern() {
     console.log(`Current step: ${currentStep}`);
 }
 
-const patterns = {
-    1: { steps: [], blocks: [] },
-    2: { steps: [], blocks: [] },
-    3: { steps: [], blocks: [] },
-    4: { steps: [], blocks: [] },
-    5: { steps: [], blocks: [] },
-    6: { steps: [], blocks: [] }
+let patterns = {
+    1: { steps: [], blocks: 16 },
+    2: { steps: [], blocks: 16 },
+    3: { steps: [], blocks: 16 },
+    4: { steps: [], blocks: 16 },
+    5: { steps: [], blocks: 16 },
+    6: { steps: [], blocks: 16 }
 };
 
-// Function to update the current pattern
+// Function to update the current pattern STEPS and BLOCKS
 function updateCurrentPattern() {
-    const pattern = {
+    let pattern = {
         steps: [],
-        blocks: []
+        blocks: 16
     };
     document.querySelectorAll('.step-pad').forEach(step => {
         pattern.steps.push({
@@ -277,12 +270,8 @@ function updateCurrentPattern() {
             velocity: step.getAttribute('data-velocity') || 'medium'
         });
     });
-    document.querySelectorAll('.step-block-button').forEach(block => {
-        pattern.blocks.push({
-            selected: block.classList.contains('selected')
-        });
-    });
     patterns[currentPattern] = pattern;
+    console.log(pattern);
     console.log(`Pattern ${currentPattern} updated.`);
 }
 
@@ -294,15 +283,7 @@ document.querySelectorAll('.step-pad').forEach(step => {
     });
 });
 
-// Event listeners for step block buttons
-document.querySelectorAll('.step-block-button').forEach(block => {
-    block.addEventListener('click', function () {
-        this.classList.toggle('selected');
-        updateCurrentPattern();
-    });
-});
-
-// Add event listeners to the pattern buttons
+// Add event listeners for pattern buttons, runs loadPattern()
 document.querySelectorAll('.pattern-btn').forEach(button => {
     button.addEventListener('click', function () {
         // Remove the 'selected-pattern' class from all buttons
@@ -322,33 +303,36 @@ document.querySelectorAll('.pattern-btn').forEach(button => {
     });
 });
 
+
 // Function to load a stored pattern
 function loadPattern(patternNumber) {
     const pattern = patterns[patternNumber];
     if (pattern) {
         document.querySelectorAll('.step-pad').forEach((step, index) => {
             step.classList.remove('selected', 'soft', 'medium', 'hard');
-            if (pattern[index] && pattern[index].selected) {
+            if (pattern.steps[index] && pattern.steps[index].selected) {
                 step.classList.add('selected');
-                step.classList.add(pattern[index].velocity);
-                step.setAttribute('data-velocity', pattern[index].velocity);
+                step.classList.add(pattern.steps[index].velocity);
+                step.setAttribute('data-velocity', pattern.steps[index].velocity);
             } else {
                 step.removeAttribute('data-velocity');
             }
         });
-        document.querySelectorAll('.step-block-button').forEach((block, index) => {
-            block.classList.remove('selected');
-            if (pattern.blocks[index] && pattern.blocks[index].selected) {
-                block.classList.add('selected');
+        // Update the totalSteps and step-block button selection based on the pattern
+        document.querySelectorAll('.step-block-digits').forEach((block) => {
+            // remove all existing selected-amount classes
+            block.classList.remove('selected-amount');
+            // Get the data-value attribute of the clicked button
+            const dataValue = parseInt(block.getAttribute('data-value'));
+            if (pattern.blocks >= dataValue) {
+            block.classList.add('selected-amount');
+            totalSteps = dataValue;
             }
+        console.log(`totalSteps: ${totalSteps}`);
         });
-        console.log(`Pattern ${patternNumber} loaded.`);
-    } else {
-        console.log(`Pattern ${patternNumber} not found.`);
-    }
-}
 
 // Load the default pattern on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadPattern(currentPattern);
 });
+}};

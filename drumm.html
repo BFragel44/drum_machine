@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="drum_assets/favi/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="drum_assets/favi/site.webmanifest">
     <title>SRCH-044</title>
     <link rel="stylesheet" href="drumm_styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
@@ -51,12 +55,13 @@
             <!-- Step Slider & Buttons -->
             <div class="slider-container">
                 <div class="step-block-digits-container">
-                    <button class="step-block-digits selected-amount">16</button>
-                    <button class="step-block-digits">32</button>
-                    <button class="step-block-digits">48</button>
-                    <button class="step-block-digits">64</button>
+                    <button class="step-block-digits selected-amount" data-value="16">16</button>
+                    <button class="step-block-digits" data-value="32">32</button>
+                    <button class="step-block-digits" data-value="48">48</button>
+                    <button class="step-block-digits" data-value="64">64</button>
                 </div>
-                <input type="range" class="step-slider" min="1" max="4" step="1" value="1" id="step-block-range">
+                <input type="range" label="velocity-slider" 
+                class="step-slider" min="1" max="4" step="1" value="1" id="step-block-range">
             </div>
             <!-- Digital Step Display LED -->
             <div class="step-display">
