@@ -1,26 +1,38 @@
-
-var sound_one = new Howl({src: ['drum_assets/DR-110Kick.wav'], preload: true});
-var sound_two = new Howl({src: ['drum_assets/DR-110Snare.wav'], preload: true});
-var sound_three = new Howl({src: ['drum_assets/DR-110Hat_C.wav'], preload: true});
-var sound_four = new Howl({src: ['drum_assets/DR-110Clap.wav'], preload: true});
-var metro_click = new Howl({src: ['drum_assets/metronome.wav'], preload: true});
+const sound_one = new Howl({
+    src: ['drum_assets/DR-110Kick.wav'], 
+    preload: true, mute: false, stereo: 0.0
+});
+const sound_two = new Howl({
+    src: ['drum_assets/DR-110Snare.wav'], 
+    preload: true, mute: false, stereo: 0.0
+});
+const sound_three = new Howl({
+    src: ['drum_assets/DR-110Hat_C.wav'], 
+    preload: true, mute: false, stereo: 0.0
+});
+const sound_four = new Howl(
+    {src: ['drum_assets/DR-110Hat_O.wav'], 
+    preload: true, mute: false, stereo: 0.0
+});
 
 const soundMap = {
-    sound_one: sound_one,
-    sound_two: sound_two,
-    sound_three: sound_three,
-    sound_four: sound_four
+    "sound_one": sound_one,
+    "sound_two": sound_two,
+    "sound_three": sound_three,
+    "sound_four": sound_four
 };
-
-document.getElementById('start-btn').addEventListener('click', startSequence);
-document.getElementById('stop-btn').addEventListener('click', stopSequence);
-document.getElementById('clear-btn').addEventListener('click', clearPattern);
 
 let isPlaying = false;
 let tempo = 120;
 let interval;
 let globalVolume = 50;
 
+// Event listeners for start, stop, and clear buttons
+document.getElementById('start-btn').addEventListener('click', startSequence);
+document.getElementById('stop-btn').addEventListener('click', stopSequence);
+document.getElementById('clear-btn').addEventListener('click', clearPattern);
+
+// Event listener for tempo control
 document.getElementById('tempo-control').addEventListener('input', function () {
     tempo = this.value;
     document.querySelector('.tempo-display').innerText = `${tempo} BPM`;
@@ -30,6 +42,7 @@ document.getElementById('tempo-control').addEventListener('input', function () {
     }
 });
 
+// Event listener for volume control
 document.getElementById('volume-control').addEventListener('input', function () {
     globalVolume = this.value;
     Howler.volume(globalVolume / 100);
@@ -76,22 +89,127 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
     });
 });
 
-
-// Play the corresponding sound for top drum pads
-document.querySelectorAll('.drum-pad').forEach(pad => {
+// Play the drum preview sound
+document.querySelectorAll('.preview').forEach(pad => {
     pad.addEventListener('click', function() {
-        // Remove 'selected' class from all drum pads
-        document.querySelectorAll('.drum-pad').forEach(p => p.classList.remove('selected'));
-        // Add 'selected' class to the clicked pad
-        this.classList.add('selected');
-        if (this.classList.contains('drum-one')) {
-            sound_one.play();
-        } else if (this.classList.contains('drum-two')) {
-            sound_two.play();
-        } else if (this.classList.contains('drum-three')) {
-            sound_three.play();
-        } else if (this.classList.contains('drum-four')) {
-            sound_four.play();
+        var sound = null;
+        if (pad.getAttribute('data-sound') === 'sound_one') {
+            sound = sound_one;
+        } else if (this.getAttribute('data-sound') === 'sound_two') {
+            sound = sound_two;
+        } else if (this.getAttribute('data-sound') === 'sound_three') {
+            sound = sound_three;
+        } else if (this.getAttribute('data-sound') === 'sound_four') {
+            sound = sound_four;
+        }
+        if (sound) {
+            this.classList.add('selected');
+            let id = sound.play();
+            sound.on('end', (soundId) => {
+                this.classList.remove('selected');
+            });
+        }  
+    });
+});
+
+// Solo all sounds with this button selected
+document.querySelectorAll('.solo-btn').forEach(s => {
+    s.addEventListener('click', function () {
+        const soundKey = this.getAttribute('data-sound'); // The sound key for the selected sound
+        const soloSound = soundMap[soundKey]; // The Howl object for the selected sound
+        const currentState = this.getAttribute('data-state'); // Get the current state of the button
+
+        // Toggle the button state - toggle between 'unsoloed' and 'soloed'
+        const newState = currentState === 'unsoloed' ? 'soloed' : 'unsoloed';
+        this.setAttribute('data-state', newState);
+
+        // If the current button is being soloed
+        if (newState === 'soloed') {
+            // Mute all other sounds except for those already soloed or the one just soloed
+            document.querySelectorAll('.solo-btn').forEach(otherSoloBtn => {
+                const otherSoundKey = otherSoloBtn.getAttribute('data-sound');
+                const otherSound = soundMap[otherSoundKey];
+                const otherState = otherSoloBtn.getAttribute('data-state');
+
+                if (otherSoundKey !== soundKey && otherState !== 'soloed') {
+                    // Mute any sound that is not already soloed
+                    otherSound.mute(true);
+                    const muteBtn = document.querySelector(`.mute-btn[data-sound="${otherSoundKey}"]`);
+                    if (muteBtn) {
+                        muteBtn.setAttribute('data-state', 'muted');
+                    }
+                }
+            });
+
+            // Ensure the soloed sound is not muted
+            soloSound.mute(false);
+            const muteBtn = document.querySelector(`.mute-btn[data-sound="${soundKey}"]`);
+            if (muteBtn) {
+                muteBtn.setAttribute('data-state', 'unmuted');
+            }
+        } else {
+            // If the current button is being unsoloed, check if any other solo buttons are still active
+            const anySoloed = Array.from(document.querySelectorAll('.solo-btn'))
+                .some(btn => btn.getAttribute('data-state') === 'soloed');
+
+            if (anySoloed) {
+                // If there are other solo buttons still active, mute this sound
+                soloSound.mute(true);
+                const muteBtn = document.querySelector(`.mute-btn[data-sound="${soundKey}"]`);
+                if (muteBtn) {
+                    muteBtn.setAttribute('data-state', 'muted');
+                }
+            } else {
+                // If no other solo buttons are active, unmute all sounds
+                document.querySelectorAll('.mute-btn').forEach(muteBtn => {
+                    const otherSoundKey = muteBtn.getAttribute('data-sound');
+                    const otherSound = soundMap[otherSoundKey];
+                    otherSound.mute(false);
+                    muteBtn.setAttribute('data-state', 'unmuted');
+                });
+            }
+        }
+    });
+});
+
+// Mute the selected sound
+document.querySelectorAll('.mute-btn').forEach(m => {
+    m.addEventListener('click', function () {
+        const soundKey = this.getAttribute('data-sound');
+        const muteSound = soundMap[soundKey];
+        const currentState = this.getAttribute('data-state');
+
+        if (muteSound) {
+            const newState = currentState === 'unmuted' ? 'muted' : 'unmuted';
+            this.setAttribute('data-state', newState);
+
+            if (newState === 'muted') {
+                muteSound.mute(true);
+                console.log(`${soundKey} muted`);
+
+                // Deactivate the corresponding solo button if it exists
+                const soloBtn = document.querySelector(`.solo-btn[data-sound="${soundKey}"]`);
+                if (soloBtn) {
+                    soloBtn.setAttribute('data-state', 'unsoloed');
+                }
+            } else {
+                muteSound.mute(false);
+                console.log(`${soundKey} unmuted`);
+            }
+        } else {
+            console.log(`No sound found for key: ${soundKey}`);
+        }
+    });
+});
+
+// Pan the selected sound
+document.querySelectorAll('.pan-control').forEach(pan => {
+    pan.addEventListener('input', function () {
+        const soundKey = this.getAttribute('data-sound');
+        const panSound = soundMap[soundKey];
+        const panValue = parseFloat(this.value);
+        if (panSound) {
+            panSound.stereo(panValue);
         }
     });
 });
@@ -99,7 +217,7 @@ document.querySelectorAll('.drum-pad').forEach(pad => {
 function startSequence() {
     if (!isPlaying) {
         isPlaying = true;
-        interval = setInterval(playPattern, (60000 / tempo) / 4); // Adjusts for tempo and timing
+        interval = setInterval(playPattern, (60000 / tempo) / 4);
     }
 };
 
@@ -232,13 +350,9 @@ function playPattern() {
                 } else if (velocity === 'hard') {
                     volume = 1.5;
                 }
-
-                console.log(`Playing sound: ${soundKey}, volume: ${volume}, velocity: ${velocity}`);
                 sound.volume(volume);
                 sound.play();
             }
-        } else {
-            console.log("Step is not selected and will not play.");
         }
     });
     // Update the .step-digits div to show the current step number
@@ -246,7 +360,6 @@ function playPattern() {
 
     // Move to the next step, loops back to the first step after 16
     currentStep = (currentStep + 1) % totalSteps;
-    console.log(`Current step: ${currentStep}`);
 }
 
 let patterns = {

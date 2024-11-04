@@ -25,8 +25,10 @@
     
         <div class="led-buttons">
             <!-- Control Knobs (for tempo, volume) -->
-            <input type="range" min="60" max="180" value="120" step="1" id="tempo-control">
-            <input type="range" min="0" max="100" value="50" id="volume-control">
+            <input type="range" label="tempo-slider"
+            min="1" max="240" value="120" step="1" id="tempo-control">
+            <input type="range" label="volume-slider"
+            min="0" max="100" value="50" id="volume-control">
             <!-- Pattern Select Buttons-->
             <div class="pattern-buttons">
                 <button class="pattern-btn selected-pattern" data-pattern="1"></button>
@@ -37,19 +39,6 @@
                 <button class="pattern-btn" data-pattern="6"></button>
             </div>
         </div>
-
-        <!-- Drum Pad Grid (kick, snare, hi-hat, etc.) -->
-        <div class="drum-grid">
-            <!-- Bass Drum -->
-            <div class="drum-pad drum-one">Bass Drum</div>
-            <!-- Snare Drum -->
-            <div class="drum-pad drum-two">Snare Drum</div>
-            <!-- Hi-Hat -->
-            <div class="drum-pad drum-three">Hi-Hat</div>
-            <!-- Clap -->
-            <div class="drum-pad drum-four">Clap</div>
-        </div>
-        
 
         <div class="velocity-steps-container">
             <!-- Step Slider & Buttons -->
@@ -77,9 +66,19 @@
 
         <!-- 16-Step Sequencer for drum loops -->
         <div class="step-sequencer">
+            
             <div class="step-row">
             <!-- Bass Drum Row -->
-            <div class="drum-label">Bass Drum</div>
+            <div class="label-controls-container">
+                <div class="drum-label">Kick</div>
+                <button class="preview" data-sound="sound_one" data-state="unpreviewed">P</button>
+                <button class="mute-btn" data-sound="sound_one" data-state="unmuted">M</button>
+                <button class="solo-btn" data-sound="sound_one" data-state="unsoloed">S</button>
+                <div class="pan-container">
+                    <input type="range" label="pan-slider"
+                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_one">
+                </div>
+            </div>
                 <div class="step-buttons chunk-1">
                     <button class="step-pad" data-sound="sound_one" data-step="1"></button>
                     <button class="step-pad" data-sound="sound_one" data-step="2"></button>
@@ -155,7 +154,15 @@
         
             <div class="step-row">
             <!-- Snare Drum Row -->
-            <span class="drum-label">Snare Drum</span>
+            <div class="label-controls-container">
+                <div class="drum-label">Snare</div>
+                <button class="preview" data-sound="sound_two" data-state="unpreviewed">P</button>
+                <button class="mute-btn" data-sound="sound_two" data-state="unmuted">M</button>
+                <button class="solo-btn" data-sound="sound_two" data-state="unsoloed">S</button>
+                <div class="pan-container"><input type="range" label="pan-slider"
+                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_two">
+                </div>
+            </div>
                 <div class="step-buttons chunk-1">
                     <button class="step-pad" data-sound="sound_two" data-step="1"></button>
                     <button class="step-pad" data-sound="sound_two" data-step="2"></button>
@@ -232,7 +239,15 @@
         
             <div class="step-row">
             <!-- Hi-Hat Row -->
-            <span class="drum-label">Hi-Hat</span>
+            <div class="label-controls-container">
+                <div class="drum-label">Hi-Hat C</div>
+                <button class="preview" data-sound="sound_three" data-state="unpreviewed">P</button>
+                <button class="mute-btn" data-sound="sound_three" data-state="unmuted">M</button>
+                <button class="solo-btn" data-sound="sound_three" data-state="unsoloed">S</button>
+                <div class="pan-container"><input type="range" label="pan-slider"
+                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_three">
+                </div>
+            </div>
                 <div class="step-buttons chunk-1">
                     <button class="step-pad" data-sound="sound_three" data-step="1"></button>
                     <button class="step-pad" data-sound="sound_three" data-step="2"></button>
@@ -306,9 +321,18 @@
                     <button class="step-pad" data-sound="sound_three" data-step="64"></button>
                 </div>
             </div>
+            
             <div class="step-row">
             <!-- Clap Row -->
-            <span class="drum-label">Clap</span>
+            <div class="label-controls-container">
+                <div class="drum-label">Hi-Hat O</div>
+                <button class="preview" data-sound="sound_four" data-state="unpreviewed">P</button>
+                <button class="mute-btn" data-sound="sound_four" data-state="unmuted">M</button>
+                <button class="solo-btn" data-sound="sound_four" data-state="unsoloed">S</button>
+                <div class="pan-container"><input type="range" label="pan-slider"
+                    min="-1" max="1" value="0" step="0.1" class="pan-control"  data-sound="sound_four">
+                </div>
+            </div>
                 <div class="step-buttons chunk-1">
                     <button class="step-pad" data-sound="sound_four" data-step="1"></button>
                     <button class="step-pad" data-sound="sound_four" data-step="2"></button>

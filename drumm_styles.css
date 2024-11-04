@@ -43,12 +43,14 @@ body {
     justify-content: space-between;
     width: 100%;
 }
+
 /* Tempo LED text */
 .tempo-display {
     display: flex;
     text-align: left;
 }
 
+/* Volume LED text */
 .volume-display {
     display: flex;
     text-align: center;
@@ -60,24 +62,54 @@ body {
     text-align: right;
 }
 
-.led-buttons { /* LED buttons CONTAINER */
+/* LED buttons CONTAINER */
+.led-buttons { 
     display: flex;
     justify-content: space-between;
     margin-top: 0px;
 }
 
-/* Tempo and Volume knobs */
-.control-knobs input {
-    width: 100px;
-    margin: 0 10px;
+/* Tempo control slider */
+#tempo-control {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #666;
+    border: 2px solid #777;
+    height: 1rem;
+    cursor: pointer;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
-.volume-control {
-    display: flex;
+/* Tempo control thumb */
+#tempo-control::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	margin-top: 0px;
+	background-color: #000000;
+	height: 1rem;
+	width: 0.5rem;
 }
 
-.tempo-control {
-    display: flex;
+/* Volume control slider */
+#volume-control {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #666;
+    border: 2px solid #777;
+    height: 1rem;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+/* Volume control thumb */
+#volume-control::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	margin-top: 0px;
+	background-color: #000000;
+	height: 1rem;
+	width: 0.5rem;
 }
 
 /* Pattern buttons */
@@ -101,13 +133,71 @@ body {
     color: #fff;
 }
 
-/* Drum pads under the control knobs */
-.drum-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 5px;
-    margin-bottom: 20px;
+
+.preview {
+        background-color: #666;
+        border: 1px solid #777;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
 }
+
+.preview.selected {
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
+    color: #fff;
+}
+
+.mute-btn[data-state="unmuted"] {
+    background-color: #666;
+    border: 1px solid #777;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mute-btn[data-state="muted"] {
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
+    color: #fff;
+}
+
+.solo-btn[data-state="unsoloed"] {
+    background-color: #666;
+    border: 1px solid #777;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.solo-btn[data-state="soloed"] {
+    background-color: #ff8800; 
+    border: solid 2px #ffffff;
+    color: #fff;
+}
+
+/* Pan slider */
+.pan-control {
+    -webkit-appearance: none;
+    appearance: none;
+    background: #666;
+    border: 1px solid #777;
+    height: 100%;
+    width: 50%;
+    margin: 0;
+    cursor: pointer;
+
+}
+
+/* Pan slider thumb */
+.pan-control::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #000000;
+	height: 1rem;
+	width: 0.5rem;
+}
+
 
 /* Step Blocks, Step Digits, Velocity row */
 .velocity-steps-container {
@@ -146,15 +236,23 @@ body {
     color: #fff;
 }
 
-/* Slider styling */
+/* Step slider track */
 .step-slider {
     -webkit-appearance: none;
     appearance: none;
-    background: #b6b6b6;
+    background: #666;
     border: 2px solid #777;
     height: 1rem;
     cursor: pointer;
+}
 
+/* Step slider thumb */
+.step-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #000000;
+    height: 1rem;
+    width: 0.5rem;
 }
 
 /* Step Counter LED Screen */
@@ -210,8 +308,7 @@ body {
 
 /* Highlighting the active step */
 .active-step {
-    border-color: #ff0000; /* Red border for extra emphasis */
-    box-shadow: 0 0 20px #ffffff; /* glow */
+    box-shadow: 0 2px 0 #ff0000; /* glow */
 }
 
 .step-sequencer {
@@ -273,10 +370,16 @@ body {
     background-color: rgb(200, 90, 0); /* Darker orange for hard */
 }
 
+.label-controls-container {
+    display: flex;
+    margin-bottom: 0px;
+}
+
 .drum-label {
     background-color: #000000;
     border: 2px solid #777;
-    max-width: 18%;
+    max-width: 20%;
+    min-width: 20%;
     padding: 1px;
     text-align: left;
     font-family: 'DS-DIGIB', sans-serif;
