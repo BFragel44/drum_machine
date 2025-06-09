@@ -11,8 +11,9 @@ body {
 }
 
 .drum-machine {
-    background-color: #222;
-    border: 2px solid #999;
+    background-color: #1e1e1e; /* Graphite Black */
+    border: 2px solid #b0b0b0;
+    padding: 20px;
     border-radius: 0.3rem;
     padding: 20px;
     width: 600px;
@@ -129,51 +130,55 @@ body {
 /* Highlight the SELECTED pattern button*/
 .selected-pattern {
     background-color: #ff8800; 
-    border: solid 2px #ffffff;
+    /* border: solid 2px #ffffff; */
     color: #fff;
 }
 
-
-.preview {
-        background-color: #666;
-        border: 1px solid #777;
-        color: #fff;
-        font-weight: bold;
-        cursor: pointer;
+.preview-btn {
+    background-color: #135f1d;
+    /* border: 2px solid #777; */
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-.preview.selected {
-    background-color: #ff8800; 
-    border: solid 2px #ffffff;
+.preview-btn.selected {
+    background-color: #16a529; 
+    /* border: solid 2px #ffffff; */
     color: #fff;
 }
 
 .mute-btn[data-state="unmuted"] {
-    background-color: #666;
-    border: 1px solid #777;
+    background-color: #003d5e;
+    color: #ffffff;
+    /* border: 2px solid #777; */
     color: #fff;
     font-weight: bold;
     cursor: pointer;
 }
 
 .mute-btn[data-state="muted"] {
-    background-color: #ff8800; 
-    border: solid 2px #ffffff;
+    background-color: #009ef3; 
+    /* border: solid 2px #ffffff; */
     color: #fff;
 }
 
 .solo-btn[data-state="unsoloed"] {
-    background-color: #666;
-    border: 1px solid #777;
+    background-color: #970000;
+    /* border: 2px solid #777; */
     color: #fff;
     font-weight: bold;
     cursor: pointer;
 }
 
 .solo-btn[data-state="soloed"] {
-    background-color: #ff8800; 
-    border: solid 2px #ffffff;
+    background-color: #f50000; 
+    /* border: solid 2px #ffffff; */
     color: #fff;
+}
+
+.pan-container {
+    display: flex;
 }
 
 /* Pan slider */
@@ -182,7 +187,6 @@ body {
     appearance: none;
     background: #666;
     border: 1px solid #777;
-    height: 100%;
     width: 50%;
     margin: 0;
     cursor: pointer;
@@ -222,10 +226,12 @@ body {
 }
 
 .step-block-digits {
+    background-color: #f77f00; /* Retro Orange */
+    color: #1e1e1e; /* Graphite Black text for high contrast */
     width: 4ch;
-    background-color: #666;
+    /* background-color: #666; */
     border: 2px solid #777;
-    color: #eee;
+    /* color: #eee; */
     font-weight: bold;
     cursor: pointer;
 }
@@ -327,8 +333,8 @@ body {
 .step-pad {
     width: 30px;
     height: 30px;
-    background-color: #444;
-    border: 2px solid #666;
+    background-color: #ff880042;
+    /* border: 2px solid #666; */
     cursor: pointer;
 }
 
@@ -354,20 +360,20 @@ body {
 }
 
 .step-pad.selected {
-    border: 2px solid rgb(255, 255, 255);
-    background-color: #ff8800; /* Highlight for selected steps */
+    /* border: 2px solid rgb(255, 255, 255); */
+    background-color: #ff8800;
 }
 
 .step-pad.soft {
-    background-color: rgb(255, 200, 128); /* Light orange for soft */
+    background-color: #ffc880; /* Light orange for soft */
 }
 
 .step-pad.medium {
-    background-color: rgb(255, 136, 0); /* Medium velocity */
+    background-color: #ff8800; /* Medium velocity */
 }
 
 .step-pad.hard {
-    background-color: rgb(200, 90, 0); /* Darker orange for hard */
+    background-color: hsl(27, 100%, 39%); /* Darker orange for hard */
 }
 
 .label-controls-container {
@@ -404,19 +410,19 @@ body {
     transform: translateY(4px);
 }
 .drum-pad.drum-one.selected {
-    background-color: rgb(255, 136, 0);
+    background-color: #ff8800;
     border: solid 2px #ffffff;
 }
 .drum-pad.drum-two.selected {
-    background-color: rgb(255, 136, 0);
+    background-color: #ff8800;
     border: solid 2px #ffffff;
 }
 .drum-pad.drum-three.selected {
-    background-color: rgb(255, 136, 0);
+    background-color: #ff8800;
     border: solid 2px #ffffff;
 }
 .drum-pad.drum-four.selected {
-    background-color: rgb(255, 136, 0);
+    background-color: #ff8800;
     border: solid 2px #ffffff;
 }
 

@@ -90,7 +90,7 @@ document.querySelectorAll('.step-block-digits').forEach(digit => {
 });
 
 // Play the drum preview sound
-document.querySelectorAll('.preview').forEach(pad => {
+document.querySelectorAll('.preview-btn').forEach(pad => {
     pad.addEventListener('click', function() {
         var sound = null;
         if (pad.getAttribute('data-sound') === 'sound_one') {
@@ -375,7 +375,9 @@ let patterns = {
 function updateCurrentPattern() {
     let pattern = {
         steps: [],
-        blocks: 16
+        // blocks: 16
+        // preserve the selected number of blocks for the pattern instead of hardcoding at 16
+        blocks: totalSteps
     };
     document.querySelectorAll('.step-pad').forEach(step => {
         pattern.steps.push({
