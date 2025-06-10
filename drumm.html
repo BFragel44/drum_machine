@@ -25,10 +25,11 @@
     
         <div class="led-buttons">
             <!-- Control Knobs (for tempo, volume) -->
+            <label for="tempo-control" class="visually-hidden">Tempo</label>
             <input type="range" label="tempo-slider"
-            min="1" max="240" value="120" step="1" id="tempo-control">
+            min="1" max="240" value="120" step="1" id="tempo-control" title="Tempo">
             <input type="range" label="volume-slider"
-            min="0" max="100" value="50" id="volume-control">
+            min="0" max="100" value="50" id="volume-control" title="Volume">
             <!-- Pattern Select Buttons-->
             <div class="pattern-buttons">
                 <button type="button" title="pattern 1" class="pattern-btn selected-pattern" data-pattern="1"></button>
@@ -50,7 +51,7 @@
                     <button type="button" class="step-block-digits" data-value="64">64</button>
                 </div>
                 <input type="range" label="velocity-slider" 
-                class="step-slider" min="1" max="4" step="1" value="1" id="step-block-range">
+                class="step-slider" min="1" max="4" step="1" value="1" id="step-block-range" title="Step Block Amount">
             </div>
             <!-- Digital Step Display LED -->
             <div class="step-display">
@@ -80,80 +81,80 @@
                 <button type="button" class="solo-btn" data-sound="sound_one" data-state="unsoloed">S</button>
                 <div class="pan-container">
                     <input type="range" label="pan-slider"
-                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_one">
+                                        min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_one" title="Pan">
                 </div>
             </div>
                 <div class="step-buttons chunk-1">
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="1"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="2"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="3"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="4"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="5"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="6"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="7"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="8"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="9"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="10"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="11"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="12"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="13"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="14"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="15"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="16"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="1" title="Step 1" aria-label="Step 1"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="2" title="Step 2" aria-label="Step 2"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="3" title="Step 3" aria-label="Step 3"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="4" title="Step 4" aria-label="Step 4"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="5" title="Step 5" aria-label="Step 5"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="6" title="Step 6" aria-label="Step 6"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="7" title="Step 7" aria-label="Step 7"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="8" title="Step 8" aria-label="Step 8"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="9" title="Step 9" aria-label="Step 9"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="10" title="Step 10" aria-label="Step 10"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="11" title="Step 11" aria-label="Step 11"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="12" title="Step 12" aria-label="Step 12"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="13" title="Step 13" aria-label="Step 13"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="14" title="Step 14" aria-label="Step 14"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="15" title="Step 15" aria-label="Step 15"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="16" title="Step 16" aria-label="Step 16"></button>
                 </div>
                 <div class="step-buttons chunk-2">
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="17"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="18"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="19"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="20"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="21"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="22"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="23"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="24"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="25"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="26"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="27"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="28"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="29"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="30"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="31"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="32"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="17" title="Step 17" aria-label="Step 17"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="18" title="Step 18" aria-label="Step 18"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="19" title="Step 19" aria-label="Step 19"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="20" title="Step 20" aria-label="Step 20"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="21" title="Step 21" aria-label="Step 21"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="22" title="Step 22" aria-label="Step 22"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="23" title="Step 23" aria-label="Step 23"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="24" title="Step 24" aria-label="Step 24"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="25" title="Step 25" aria-label="Step 25"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="26" title="Step 26" aria-label="Step 26"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="27" title="Step 27" aria-label="Step 27"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="28" title="Step 28" aria-label="Step 28"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="29" title="Step 29" aria-label="Step 29"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="30" title="Step 30" aria-label="Step 30"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="31" title="Step 31" aria-label="Step 31"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="32" title="Step 32" aria-label="Step 32"></button>
                 </div>
                 <div class="step-buttons chunk-3">
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="33"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="34"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="35"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="36"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="37"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="38"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="39"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="40"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="41"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="42"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="43"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="44"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="45"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="46"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="47"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="48"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="33" title="Step 33" aria-label="Step 33"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="34" title="Step 34" aria-label="Step 34"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="35" title="Step 35" aria-label="Step 35"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="36" title="Step 36" aria-label="Step 36"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="37" title="Step 37" aria-label="Step 37"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="38" title="Step 38" aria-label="Step 38"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="39" title="Step 39" aria-label="Step 39"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="40" title="Step 40" aria-label="Step 40"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="41" title="Step 41" aria-label="Step 41"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="42" title="Step 42" aria-label="Step 42"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="43" title="Step 43" aria-label="Step 43"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="44" title="Step 44" aria-label="Step 44"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="45" title="Step 45" aria-label="Step 45"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="46" title="Step 46" aria-label="Step 46"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="47" title="Step 47" aria-label="Step 47"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="48" title="Step 48" aria-label="Step 48"></button>
                 </div>
                 <div class="step-buttons chunk-4">
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="49"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="50"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="51"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="52"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="53"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="54"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="55"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="56"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="57"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="58"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="59"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="60"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="61"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="62"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="63"></button>
-                    <button type="button" class="step-pad" data-sound="sound_one" data-step="64"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="49" title="Step 49" aria-label="Step 49"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="50" title="Step 50" aria-label="Step 50"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="51" title="Step 51" aria-label="Step 51"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="52" title="Step 52" aria-label="Step 52"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="53" title="Step 53" aria-label="Step 53"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="54" title="Step 54" aria-label="Step 54"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="55" title="Step 55" aria-label="Step 55"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="56" title="Step 56" aria-label="Step 56"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="57" title="Step 57" aria-label="Step 57"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="58" title="Step 58" aria-label="Step 58"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="59" title="Step 59" aria-label="Step 59"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="60" title="Step 60" aria-label="Step 60"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="61" title="Step 61" aria-label="Step 61"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="62" title="Step 62" aria-label="Step 62"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="63" title="Step 63" aria-label="Step 63"></button>
+                    <button type="button" class="step-pad" data-sound="sound_one" data-step="64" title="Step 64" aria-label="Step 64"></button>
             </div>
         
             <div class="step-row">
@@ -168,80 +169,80 @@
                 <button type="button" class="mute-btn" data-sound="sound_two" data-state="unmuted">M</button>
                 <button type="button" class="solo-btn" data-sound="sound_two" data-state="unsoloed">S</button>
                 <div class="pan-container"><input type="range" label="pan-slider"
-                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_two">
+                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_two" title="Pan">
                 </div>
             </div>
                 <div class="step-buttons chunk-1">
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="1"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="2"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="3"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="4"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="5"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="6"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="7"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="8"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="9"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="10"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="11"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="12"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="13"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="14"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="15"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="16"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="1" title="Step 1" aria-label="Step 1"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="2" title="Step 2" aria-label="Step 2"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="3" title="Step 3" aria-label="Step 3"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="4" title="Step 4" aria-label="Step 4"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="5" title="Step 5" aria-label="Step 5"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="6" title="Step 6" aria-label="Step 6"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="7" title="Step 7" aria-label="Step 7"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="8" title="Step 8" aria-label="Step 8"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="9" title="Step 9" aria-label="Step 9"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="10" title="Step 10" aria-label="Step 10"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="11" title="Step 11" aria-label="Step 11"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="12" title="Step 12" aria-label="Step 12"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="13" title="Step 13" aria-label="Step 13"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="14" title="Step 14" aria-label="Step 14"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="15" title="Step 15" aria-label="Step 15"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="16" title="Step 16" aria-label="Step 16"></button>
                 </div>
                 <div class="step-buttons chunk-2">
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="17"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="18"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="19"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="20"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="21"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="22"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="23"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="24"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="25"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="26"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="27"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="28"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="29"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="30"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="31"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="32"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="17" title="Step 17" aria-label="Step 17"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="18" title="Step 18" aria-label="Step 18"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="19" title="Step 19" aria-label="Step 19"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="20" title="Step 20" aria-label="Step 20"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="21" title="Step 21" aria-label="Step 21"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="22" title="Step 22" aria-label="Step 22"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="23" title="Step 23" aria-label="Step 23"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="24" title="Step 24" aria-label="Step 24"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="25" title="Step 25" aria-label="Step 25"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="26" title="Step 26" aria-label="Step 26"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="27" title="Step 27" aria-label="Step 27"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="28" title="Step 28" aria-label="Step 28"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="29" title="Step 29" aria-label="Step 29"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="30" title="Step 30" aria-label="Step 30"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="31" title="Step 31" aria-label="Step 31"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="32" title="Step 32" aria-label="Step 32"></button>
                 </div>
                 <div class="step-buttons chunk-3">
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="33"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="34"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="35"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="36"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="37"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="38"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="39"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="40"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="41"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="42"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="43"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="44"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="45"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="46"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="47"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="48"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="33" title="Step 33" aria-label="Step 33"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="34" title="Step 34" aria-label="Step 34"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="35" title="Step 35" aria-label="Step 35"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="36" title="Step 36" aria-label="Step 36"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="37" title="Step 37" aria-label="Step 37"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="38" title="Step 38" aria-label="Step 38"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="39" title="Step 39" aria-label="Step 39"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="40" title="Step 40" aria-label="Step 40"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="41" title="Step 41" aria-label="Step 41"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="42" title="Step 42" aria-label="Step 42"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="43" title="Step 43" aria-label="Step 43"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="44" title="Step 44" aria-label="Step 44"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="45" title="Step 45" aria-label="Step 45"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="46" title="Step 46" aria-label="Step 46"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="47" title="Step 47" aria-label="Step 47"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="48" title="Step 48" aria-label="Step 48"></button>
                 </div>
                 <div class="step-buttons chunk-4">
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="49"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="50"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="51"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="52"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="53"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="54"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="55"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="56"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="57"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="58"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="59"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="60"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="61"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="62"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="63"></button>
-                    <button type="button" class="step-pad" data-sound="sound_two" data-step="64"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="49" title="Step 49" aria-label="Step 49"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="50" title="Step 50" aria-label="Step 50"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="51" title="Step 51" aria-label="Step 51"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="52" title="Step 52" aria-label="Step 52"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="53" title="Step 53" aria-label="Step 53"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="54" title="Step 54" aria-label="Step 54"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="55" title="Step 55" aria-label="Step 55"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="56" title="Step 56" aria-label="Step 56"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="57" title="Step 57" aria-label="Step 57"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="58" title="Step 58" aria-label="Step 58"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="59" title="Step 59" aria-label="Step 59"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="60" title="Step 60" aria-label="Step 60"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="61" title="Step 61" aria-label="Step 61"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="62" title="Step 62" aria-label="Step 62"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="63" title="Step 63" aria-label="Step 63"></button>
+                    <button type="button" class="step-pad" data-sound="sound_two" data-step="64" title="Step 64" aria-label="Step 64"></button>
                 </div>
             </div>
         
@@ -257,80 +258,80 @@
                 <button type="button" class="mute-btn" data-sound="sound_three" data-state="unmuted">M</button>
                 <button type="button" class="solo-btn" data-sound="sound_three" data-state="unsoloed">S</button>
                 <div class="pan-container"><input type="range" label="pan-slider"
-                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_three">
+                    min="-1" max="1" value="0" step="0.1" class="pan-control" data-sound="sound_three" title="Pan">
                 </div>
             </div>
                 <div class="step-buttons chunk-1">
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="1"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="2"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="3"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="4"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="5"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="6"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="7"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="8"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="9"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="10"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="11"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="12"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="13"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="14"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="15"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="16"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="1" title="Step 1" aria-label="Step 1"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="2" title="Step 2" aria-label="Step 2"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="3" title="Step 3" aria-label="Step 3"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="4" title="Step 4" aria-label="Step 4"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="5" title="Step 5" aria-label="Step 5"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="6" title="Step 6" aria-label="Step 6"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="7" title="Step 7" aria-label="Step 7"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="8" title="Step 8" aria-label="Step 8"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="9" title="Step 9" aria-label="Step 9"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="10" title="Step 10" aria-label="Step 10"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="11" title="Step 11" aria-label="Step 11"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="12" title="Step 12" aria-label="Step 12"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="13" title="Step 13" aria-label="Step 13"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="14" title="Step 14" aria-label="Step 14"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="15" title="Step 15" aria-label="Step 15"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="16" title="Step 16" aria-label="Step 16"></button>
                 </div>
                 <div class="step-buttons chunk-2">
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="17"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="18"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="19"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="20"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="21"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="22"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="23"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="24"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="25"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="26"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="27"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="28"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="29"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="30"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="31"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="32"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="17" title="Step 17" aria-label="Step 17"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="18" title="Step 18" aria-label="Step 18"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="19" title="Step 19" aria-label="Step 19"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="20" title="Step 20" aria-label="Step 20"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="21" title="Step 21" aria-label="Step 21"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="22" title="Step 22" aria-label="Step 22"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="23" title="Step 23" aria-label="Step 23"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="24" title="Step 24" aria-label="Step 24"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="25" title="Step 25" aria-label="Step 25"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="26" title="Step 26" aria-label="Step 26"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="27" title="Step 27" aria-label="Step 27"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="28" title="Step 28" aria-label="Step 28"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="29" title="Step 29" aria-label="Step 29"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="30" title="Step 30" aria-label="Step 30"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="31" title="Step 31" aria-label="Step 31"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="32" title="Step 32" aria-label="Step 32"></button>
                 </div>
                 <div class="step-buttons chunk-3">
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="33"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="34"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="35"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="36"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="37"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="38"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="39"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="40"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="41"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="42"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="43"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="44"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="45"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="46"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="47"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="48"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="33" title="Step 33" aria-label="Step 33"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="34" title="Step 34" aria-label="Step 34"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="35" title="Step 35" aria-label="Step 35"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="36" title="Step 36" aria-label="Step 36"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="37" title="Step 37" aria-label="Step 37"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="38" title="Step 38" aria-label="Step 38"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="39" title="Step 39" aria-label="Step 39"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="40" title="Step 40" aria-label="Step 40"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="41" title="Step 41" aria-label="Step 41"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="42" title="Step 42" aria-label="Step 42"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="43" title="Step 43" aria-label="Step 43"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="44" title="Step 44" aria-label="Step 44"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="45" title="Step 45" aria-label="Step 45"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="46" title="Step 46" aria-label="Step 46"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="47" title="Step 47" aria-label="Step 47"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="48" title="Step 48" aria-label="Step 48"></button>
                 </div>
                 <div class="step-buttons chunk-4">
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="49"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="50"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="51"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="52"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="53"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="54"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="55"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="56"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="57"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="58"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="59"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="60"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="61"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="62"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="63"></button>
-                    <button type="button" class="step-pad" data-sound="sound_three" data-step="64"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="49" title="Step 49" aria-label="Step 49"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="50" title="Step 50" aria-label="Step 50"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="51" title="Step 51" aria-label="Step 51"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="52" title="Step 52" aria-label="Step 52"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="53" title="Step 53" aria-label="Step 53"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="54" title="Step 54" aria-label="Step 54"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="55" title="Step 55" aria-label="Step 55"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="56" title="Step 56" aria-label="Step 56"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="57" title="Step 57" aria-label="Step 57"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="58" title="Step 58" aria-label="Step 58"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="59" title="Step 59" aria-label="Step 59"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="60" title="Step 60" aria-label="Step 60"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="61" title="Step 61" aria-label="Step 61"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="62" title="Step 62" aria-label="Step 62"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="63" title="Step 63" aria-label="Step 63"></button>
+                    <button type="button" class="step-pad" data-sound="sound_three" data-step="64" title="Step 64" aria-label="Step 64"></button>
                 </div>
             </div>
             
@@ -346,80 +347,80 @@
                 <button type="button" class="mute-btn" data-sound="sound_four" data-state="unmuted">M</button>
                 <button type="button" class="solo-btn" data-sound="sound_four" data-state="unsoloed">S</button>
                 <div class="pan-container"><input type="range" label="pan-slider"
-                    min="-1" max="1" value="0" step="0.1" class="pan-control"  data-sound="sound_four">
+                    min="-1" max="1" value="0" step="0.1" class="pan-control"  data-sound="sound_four" title="Pan">
                 </div>
             </div>
                 <div class="step-buttons chunk-1">
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="1"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="2"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="3"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="4"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="5"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="6"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="7"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="8"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="9"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="10"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="11"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="12"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="13"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="14"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="15"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="16"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="1" title="Step 1" aria-label="Step 1"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="2" title="Step 2" aria-label="Step 2"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="3" title="Step 3" aria-label="Step 3"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="4" title="Step 4" aria-label="Step 4"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="5" title="Step 5" aria-label="Step 5"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="6" title="Step 6" aria-label="Step 6"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="7" title="Step 7" aria-label="Step 7"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="8" title="Step 8" aria-label="Step 8"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="9" title="Step 9" aria-label="Step 9"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="10" title="Step 10" aria-label="Step 10"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="11" title="Step 11" aria-label="Step 11"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="12" title="Step 12" aria-label="Step 12"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="13" title="Step 13" aria-label="Step 13"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="14" title="Step 14" aria-label="Step 14"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="15" title="Step 15" aria-label="Step 15"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="16" title="Step 16" aria-label="Step 16"></button>
                 </div>
                 <div class="step-buttons chunk-2">
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="17"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="18"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="19"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="20"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="21"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="22"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="23"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="24"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="25"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="26"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="27"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="28"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="29"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="30"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="31"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="32"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="17" title="Step 17" aria-label="Step 17"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="18" title="Step 18" aria-label="Step 18"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="19" title="Step 19" aria-label="Step 19"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="20" title="Step 20" aria-label="Step 20"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="21" title="Step 21" aria-label="Step 21"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="22" title="Step 22" aria-label="Step 22"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="23" title="Step 23" aria-label="Step 23"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="24" title="Step 24" aria-label="Step 24"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="25" title="Step 25" aria-label="Step 25"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="26" title="Step 26" aria-label="Step 26"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="27" title="Step 27" aria-label="Step 27"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="28" title="Step 28" aria-label="Step 28"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="29" title="Step 29" aria-label="Step 29"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="30" title="Step 30" aria-label="Step 30"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="31" title="Step 31" aria-label="Step 31"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="32" title="Step 32" aria-label="Step 32"></button>
                 </div>
                 <div class="step-buttons chunk-3">
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="33"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="34"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="35"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="36"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="37"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="38"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="39"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="40"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="41"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="42"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="43"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="44"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="45"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="46"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="47"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="48"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="33" title="Step 33" aria-label="Step 33"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="34" title="Step 34" aria-label="Step 34"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="35" title="Step 35" aria-label="Step 35"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="36" title="Step 36" aria-label="Step 36"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="37" title="Step 37" aria-label="Step 37"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="38" title="Step 38" aria-label="Step 38"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="39" title="Step 39" aria-label="Step 39"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="40" title="Step 40" aria-label="Step 40"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="41" title="Step 41" aria-label="Step 41"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="42" title="Step 42" aria-label="Step 42"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="43" title="Step 43" aria-label="Step 43"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="44" title="Step 44" aria-label="Step 44"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="45" title="Step 45" aria-label="Step 45"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="46" title="Step 46" aria-label="Step 46"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="47" title="Step 47" aria-label="Step 47"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="48" title="Step 48" aria-label="Step 48"></button>
                 </div>
                 <div class="step-buttons chunk-4">
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="49"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="50"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="51"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="52"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="53"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="54"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="55"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="56"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="57"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="58"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="59"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="60"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="61"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="62"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="63"></button>
-                    <button type="button" class="step-pad" data-sound="sound_four" data-step="64"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="49" title="Step 49" aria-label="Step 49"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="50" title="Step 50" aria-label="Step 50"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="51" title="Step 51" aria-label="Step 51"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="52" title="Step 52" aria-label="Step 52"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="53" title="Step 53" aria-label="Step 53"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="54" title="Step 54" aria-label="Step 54"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="55" title="Step 55" aria-label="Step 55"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="56" title="Step 56" aria-label="Step 56"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="57" title="Step 57" aria-label="Step 57"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="58" title="Step 58" aria-label="Step 58"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="59" title="Step 59" aria-label="Step 59"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="60" title="Step 60" aria-label="Step 60"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="61" title="Step 61" aria-label="Step 61"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="62" title="Step 62" aria-label="Step 62"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="63" title="Step 63" aria-label="Step 63"></button>
+                    <button type="button" class="step-pad" data-sound="sound_four" data-step="64" title="Step 64" aria-label="Step 64"></button>
             </div>
         </div>
         <!-- Transport Controls (start, stop, clear) -->
